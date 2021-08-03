@@ -11,14 +11,7 @@ public class Horse extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if(line==toLine && column==toColumn) {
-            return false;
-        }
-        if(toLine>7 || toColumn>7){
-            return false;
-        }
-
-        if(toLine<0 || toColumn<0){
+        if(!super.isOnChessBoard(line,column,toLine,toColumn)){
             return false;
         }
 
