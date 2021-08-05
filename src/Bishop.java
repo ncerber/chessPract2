@@ -13,27 +13,33 @@ public class Bishop extends ChessPiece {
         if (!super.isOnChessBoard(line, column, toLine, toColumn)) {
             return false;
         }
-        int iterator = 1;
-        for (int i = 0; i <= line; i++) {
-            if (line - iterator == toLine && column - iterator == toColumn) {
-                return true;
-            }
-            if (line + iterator <= 7) {
-                if (line + iterator == toLine && column - iterator == toColumn) {
-                    return true;
-                }
-            }
-            iterator++;
+        if (column == toColumn) {
+            return false;
         }
 
-        iterator = 1;
-        for (int i = 0; i < 7 - line; i++) {
-            if (line - iterator == toLine && column + iterator == toColumn) {
-                return true;
-            }
-            if (line + iterator <= 7) {
-                if (line + iterator == toLine && column + iterator == toColumn) {
+        int iterator = 1;
+        int lAdd = 1;
+        int cAdd = 1;
+        int count = Math.abs(column - toColumn);
+        int locLine, locColumn;
+
+        if (line > toLine) {
+            lAdd = -1;
+        }
+        if (column > toColumn) {
+            cAdd = -1;
+        }
+
+        for (int i = 0; i < count; i++) {
+            if (line + iterator > 0) {
+                locLine = line + (iterator * lAdd);
+                locColumn = column + (iterator * cAdd);
+                if (locLine == toLine && locColumn == toColumn) {
                     return true;
+                } else {
+                    if(chessBoard.board[locLine][locColumn]!=null){
+                        return false;
+                    }
                 }
             }
             iterator++;

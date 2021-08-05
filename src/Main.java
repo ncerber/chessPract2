@@ -40,7 +40,7 @@ public class Main {
 
     public static void main(String[] args) {
         ChessBoard board = buildBoard();
-        board.printBoard();
+//        board.printBoard();
         if (board.moveToPosition(1, 4, 3, 4)) {
             System.out.println("Успешно передвинулись");
         } else System.out.println("Передвижение не удалось");
@@ -49,9 +49,22 @@ public class Main {
             System.out.println("Успешно передвинулись");
         } else System.out.println("Передвижение не удалось");
 
-        if (board.moveToPosition(0, 5, 2, 3)) {
+        if (board.moveToPosition(0, 5, 3, 2)) {
             System.out.println("Успешно передвинулись");
         } else System.out.println("Передвижение не удалось");
+
+        if (board.moveToPosition(7, 5, 4, 2)) {
+            System.out.println("Успешно передвинулись");
+        } else System.out.println("Передвижение не удалось");
+
+        if (board.moveToPosition(3, 2, 7, 6)) {
+            System.out.println("Успешно передвинулись");
+        } else System.out.println("Передвижение не удалось");
+
+        if (board.moveToPosition(3, 2, 6, 5)) {
+            System.out.println("Успешно передвинулись");
+        } else System.out.println("Передвижение не удалось");
+
         board.printBoard();
     }
 }
