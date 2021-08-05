@@ -10,39 +10,34 @@ public class Bishop extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        System.out.print(" line:"+line+", column:"+column+", toLine:"+toLine+", toColumn:"+toColumn);
         if (!super.isOnChessBoard(line, column, toLine, toColumn)) {
-            System.out.println(" == res = false");
             return false;
         }
-
-        //Сначала проверяем все диагонали уходящие влево
-        for (int i = 1; i <= line; i++) {
-            if (line - i == toLine && column - i == toColumn) {
-                System.out.println(" == res = true");
+        int iterator = 1;
+        for (int i = 0; i <= line; i++) {
+            if (line - iterator == toLine && column - iterator == toColumn) {
                 return true;
             }
-            if (line + i <= 7) {
-                if (line + i == toLine && column - i == toColumn) {
-                    System.out.println(" == res = true");
+            if (line + iterator <= 7) {
+                if (line + iterator == toLine && column - iterator == toColumn) {
                     return true;
                 }
             }
+            iterator++;
         }
 
-        for (int i = 1; i <= 7 - line; i++) {
-            if (line - i == toLine && column + i == toColumn) {
-                System.out.println(" == res = true");
+        iterator = 1;
+        for (int i = 0; i < 7 - line; i++) {
+            if (line - iterator == toLine && column + iterator == toColumn) {
                 return true;
             }
-            if (line + i <= 7) {
-                if (line + i == toLine && column + i == toColumn) {
-                    System.out.println(" == res = true");
+            if (line + iterator <= 7) {
+                if (line + iterator == toLine && column + iterator == toColumn) {
                     return true;
                 }
             }
+            iterator++;
         }
-        System.out.println(" == res = false");
         return false;
     }
 
